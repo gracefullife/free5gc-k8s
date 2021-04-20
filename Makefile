@@ -191,11 +191,27 @@ build-udr: build-base
 		--build-arg TAG=${DOCKER_TAG} \
 		./images/${F5GC_UDR_NAME}
 
+push:
+	docker push ${BASE_IMAGE_NAME}
+	docker push ${GNBSIM_IMAGE_NAME}
+	docker push ${AMF_IMAGE_NAME}
+	docker push ${SMF_IMAGE_NAME}
+	docker push ${UPF_IMAGE_NAME}
+	docker push ${NRF_IMAGE_NAME}
+	docker push ${AUSF_IMAGE_NAME}
+	docker push ${NSSF_IMAGE_NAME}
+	docker push ${PCF_IMAGE_NAME}
+	docker push ${UDM_IMAGE_NAME}
+	docker push ${UDR_IMAGE_NAME}
+	docker push ${WEBUI_IMAGE_NAME}
+
+
+
 .PHONY: build-webui
 build-webui: build-base
 	${DOCKER_ENV} docker build ${DOCKER_BUILD_ARGS} \
 		--tag ${WEBUI_IMAGE_NAME} \
-		--file ./images/${F5GC_WEBUI_NAME}/Dockerfile.${TARGET} \
+		--file ./images/${F5GC_WEBUI_NAME}/Dockerfile.alpine \
 		--build-arg REGISTRY=${DOCKER_REGISTRY} \
 		--build-arg REPOSITORY=${DOCKER_REPOSITORY} \
 		--build-arg TAG=${DOCKER_TAG} \

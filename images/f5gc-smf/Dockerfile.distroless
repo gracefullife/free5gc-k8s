@@ -8,7 +8,7 @@ FROM gcr.io/distroless/base:debug
 LABEL maintainer="Yoshifumi Sumida <yoshifumi.sumida@gmail.com>"
 LABEL org.opencontainers.image.source https://github.com/gracefullife/free5gc-k8s
 
-ENV APP_NAME=amf
+ENV APP_NAME=smf
 ENV APP_ROOT=/free5gc
 ENV PATH=${APP_ROOT}:${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
 

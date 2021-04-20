@@ -12,10 +12,10 @@ spec:
       "ipam": {
         "type": "static",
         "addresses": [
-                {
-                        "address": "172.16.10.20/24",
-                        "gateway": "172.16.10.1"
-                }
+           {
+             "address": "172.16.10.20/24",
+             "gateway": "172.16.10.1"
+           }
         ]
       }
     }'

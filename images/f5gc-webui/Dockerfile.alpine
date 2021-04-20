@@ -1,4 +1,8 @@
-FROM ghcr.io/gracefullife/free5gc-k8s/f5gc-build-base:v3.0.4 AS builder
+ARG REGISTRY=ghcr.io
+ARG REPOSITORY=gracefullife/free5gc-k8s
+ARG TAG=v3.0.4
+
+FROM ${REGISTRY}/${REPOSITORY}/f5gc-build-base:${TAG} AS builder
 FROM alpine:3.8
 
 LABEL description="Free5GC open source 5G Core Network" \

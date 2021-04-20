@@ -33,7 +33,7 @@ data:
         #   dnnSmfInfoList:
         #     - dnn: internet
       pfcp:
-        addr: 172.16.30.20
+        addr: 0.0.0.0
       userplane_information:
         up_nodes:
           gNB1:

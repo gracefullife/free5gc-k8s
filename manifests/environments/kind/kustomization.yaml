@@ -1,0 +1,15 @@
+resources:
+- ../../components/f5gc-mongodb/
+- ../../components/f5gc-webui/
+- ../../components/f5gc-nrf/
+- ../../components/f5gc-udr/
+- ../../components/f5gc-udm/
+- ../../components/f5gc-ausf/
+- ../../components/f5gc-amf/
+- ../../components/f5gc-pcf/
+- ../../components/f5gc-upf/
+- ../../components/f5gc-smf/
+- ghcr.yaml
+patches:
+- image_secret.yaml
+namespace: f5gc

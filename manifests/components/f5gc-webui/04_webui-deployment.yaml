@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: f5gc-webui
+
     spec:
       securityContext:
         runAsUser: 0
