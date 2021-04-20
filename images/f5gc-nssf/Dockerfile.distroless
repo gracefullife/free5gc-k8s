@@ -1,17 +1,20 @@
-FROM ghcr.io/sumichaaan/free5gc-k8s/f5gc-build-base:v3.0.4 AS builder
+ARG REGISTRY=ghcr.io
+ARG REPOSITORY=gracefullife/free5gc-k8s
+ARG TAG=v3.0.4
+
+FROM ${REGISTRY}/${REPOSITORY}/f5gc-build-base:${TAG} AS builder
 LABEL maintainer="Yoshifumi Sumida <yoshifumi.sumida@gmail.com>"
-LABEL org.opencontainers.image.source https://github.com/sumichaaan/free5gc-k8s
+LABEL org.opencontainers.image.source https://github.com/gracefullife/free5gc-k8s
 
 FROM gcr.io/distroless/base:debug
 
 ENV APP_NAME=nssf
 ENV APP_ROOT=/free5gc
-ENV FREE5GC_BUILD_ROOT=/go/src/free5gc
 ENV PATH=${APP_ROOT}:${APP_ROOT}/bin:${PATH} HOME=${APP_ROOT}
 
-COPY --from=builder ${FREE5GC_BUILD_ROOT}/bin/${APP_NAME} ${APP_ROOT}/bin/${APP_NAME}
-COPY --from=builder ${FREE5GC_BUILD_ROOT}/config/${APP_NAME}cfg.conf ${APP_ROOT}/config/
-COPY --from=builder ${FREE5GC_BUILD_ROOT}/support/TLS/${APP_NAME}.* ${APP_ROOT}/support/TLS/
+COPY --from=builder ${APP_ROOT}/${APP_NAME} ${APP_ROOT}/bin/${APP_NAME}
+COPY --from=builder ${APP_ROOT}/config/${APP_NAME}cfg.conf ${APP_ROOT}/config/
+COPY --from=builder ${APP_ROOT}/support/TLS/${APP_NAME}.* ${APP_ROOT}/support/TLS/
 
 WORKDIR ${APP_ROOT}
 

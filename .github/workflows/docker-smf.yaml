@@ -31,7 +31,7 @@ jobs:
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run sut
           else
-            docker build . --file images/f5gc-build-base/Dockerfile.ubuntu18  -t ghcr.io/sumichaaan/free5gc-k8s/f5gc-build-base:v3.0.4
+            docker build . --file images/f5gc-build-base/Dockerfile.ubuntu18  -t ghcr.io/gracefullife/free5gc-k8s/f5gc-build-base:v3.0.4
             docker build . --file images/f5gc-smf/Dockerfile.distroless
           fi
 

@@ -1,9 +1,13 @@
-FROM ghcr.io/sumichaaan/free5gc-k8s/f5gc-build-base:v3.0.4 AS builder
+ARG DOCKER_REGISTRY=ghcr.io
+ARG DOCKER_REPOSITORY=gracefullife/free5gc-k8s
+
+FROM ${DOCKER_REGISTRY}/${DOCKER_REPOSITORY}/f5gc-build-base:v3.0.4 AS builder
+
 FROM alpine:3.8
 
 LABEL description="Free5GC open source 5G Core Network" \
     version="Stage 3"
-LABEL org.opencontainers.image.source https://github.com/sumichaaan/free5gc-k8s
+LABEL org.opencontainers.image.source https://github.com/gracefullife/free5gc-k8s
 
 ENV F5GC_MODULE ausf
 ARG DEBUG_TOOLS

@@ -1,9 +1,13 @@
-FROM ghcr.io/sumichaaan/free5gc-k8s/f5gc-build-base:v3.0.4 AS builder
+ARG REGISTRY=ghcr.io
+ARG REPOSITORY=gracefullife/free5gc-k8s
+ARG TAG=v3.0.4
+
+FROM ${REGISTRY}/${REPOSITORY}/f5gc-build-base:${TAG} AS builder
 FROM ubuntu:18.04
 
 LABEL description="Free5GC open source 5G Core Network" \
     version="Stage 3"
-LABEL org.opencontainers.image.source https://github.com/sumichaaan/free5gc-k8s
+LABEL org.opencontainers.image.source https://github.com/gracefullife/free5gc-k8s
 
 ENV F5GC_MODULE free5gc-upfd
 ENV DEBIAN_FRONTEND noninteractive
