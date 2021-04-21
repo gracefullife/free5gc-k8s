@@ -20,3 +20,11 @@ kubectl wait --for=condition=ready -n kube-system daemonset -l name=kata-deploy
 kubectl apply -f manifests/components/00_namespace.yaml
 kubens f5gc
 kustomize build manifests/environments/kind | kubectl apply -f -
+
+
+cat <<EOF
+docker exec -it f5gc-worker bash
+curl -LO https://raw.githubusercontent.com/kubernetes-sigs/cri-tools/master/docs/examples/container-config.yaml
+curl -LO https://raw.githubusercontent.com/kubernetes-sigs/cri-tools/master/docs/examples/podsandbox-config.yaml
+crictl runp -r kata-fc container-config.yaml podsandbox-config.yaml
+EOF
