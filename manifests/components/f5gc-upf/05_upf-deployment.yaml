@@ -24,6 +24,7 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: f5gc-upf-n3, f5gc-upf-n4, f5gc-upf-n6
     spec:
+      runtimeClassName: kata-qemu
       securityContext:
         runAsUser: 0
         runAsGroup: 0
@@ -32,6 +33,7 @@ spec:
           image: ghcr.io/gracefullife/free5gc-k8s/f5gc-upf:v3.0.4
           imagePullPolicy: IfNotPresent
           # imagePullPolicy: Always
+          command: ["sleep", "100000"]
           securityContext:
             privileged: false
             capabilities:
